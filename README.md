@@ -8,7 +8,7 @@ Download demos.zip and check out the basic demo.
 ### Downloads
 Version 0.1
 
-* [demos.zip](http://dl.bintray.com/terrywalsh123/gdxmu/gdxmu-libs.zip)
+* [demos.zip](http://dl.bintray.com/terrywalsh123/gdxmu/demos.zip)
    - Contains basic and advanced demos as Eclipse projects.
 * [gdxmu-all.jar](http://dl.bintray.com/terrywalsh123/gdxmu/gdxmu-all.jar)
    - Combines all gdxmu code into a single jar for you to reference in your
