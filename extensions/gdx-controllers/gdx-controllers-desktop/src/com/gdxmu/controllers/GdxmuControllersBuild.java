@@ -1,19 +1,4 @@
-/*******************************************************************************
- * Copyright 2011 See AUTHORS file.
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- ******************************************************************************/
-package com.badlogic.gdx.controllers.desktop;
+package com.gdxmu.controllers;
 
 import com.badlogic.gdx.jnigen.AntScriptGenerator;
 import com.badlogic.gdx.jnigen.BuildConfig;
@@ -22,10 +7,10 @@ import com.badlogic.gdx.jnigen.BuildTarget;
 import com.badlogic.gdx.jnigen.NativeCodeGenerator;
 import com.badlogic.gdx.jnigen.BuildTarget.TargetOs;
 
-public class DesktopControllersBuild {
+public class GdxmuControllersBuild {
 	public static void main (String[] args) throws Exception {
 		new NativeCodeGenerator().generate("src/", "bin/", "jni/");
-		BuildConfig buildConfig = new BuildConfig("gdx-controllers-desktop");
+		BuildConfig buildConfig = new BuildConfig("gdxmu-controllers-desktop");
 		
 		String[] windowsSrc = {"*.cpp",
 			"ois-v1-4svn/src/*.cpp",
@@ -44,7 +29,7 @@ public class DesktopControllersBuild {
 			"ois-v1-4svn/src/mac/*.mm",
 			"ois-v1-4svn/src/mac/MacHIDManager.cpp",
 			"ois-v1-4svn/src/mac/MacJoyStick.cpp",
-			"HIDMonitor/src/mac/HIDMonitor.mm"
+			"HIDMonitor/src/HIDMonitor.cpp"
 		};
 		
 		String[] includes = new String[] {
@@ -81,7 +66,7 @@ public class DesktopControllersBuild {
 		BuildTarget lin64 = BuildTarget.newDefaultTarget(TargetOs.Linux, true);
 		lin64.cppIncludes = linuxSrc;
 		lin64.headerDirs = includes;
-		lin64.libraries = "${basedir}/x11_amd64/libX11.so.6.3.0"; //"-lX11";
+		lin64.libraries = "-lX11";
 		
 		BuildTarget mac = BuildTarget.newDefaultTarget(TargetOs.MacOsX, false);
 		mac.cppIncludes = mac64Src;
@@ -89,10 +74,10 @@ public class DesktopControllersBuild {
 		mac.cppFlags += " -x objective-c++";
 		mac.libraries = "-framework CoreServices -framework Carbon -framework IOKit -framework Cocoa";
 		
-		new AntScriptGenerator().generate(buildConfig, win32home, win32, win64, lin32, lin64, mac);
+		new AntScriptGenerator().generate(buildConfig, win32home, win32, win64, lin32); //, lin64, mac);
 //		if(!BuildExecutor.executeAnt("jni/build-macosx32.xml", "-Dhas-compiler=true -v postcompile")) {
 //			throw new Exception("build failed");
 //		}
-		//BuildExecutor.executeAnt("jni/build.xml", "pack-natives");
+		BuildExecutor.executeAnt("jni/build.xml", "pack-natives");
 	}
 }

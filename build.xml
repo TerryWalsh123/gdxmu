@@ -194,6 +194,24 @@
 		</ant>
 	</target>
 
+	<!-- gdxmu -->
+	<target name="gdxmu" depends="gdx-core,gdx-controllers,gdx-controllers-desktop">
+		<copy tofile="${distDir}/extensions/jna/jna-4.0.0.jar" file="extensions/gdxmu/libs/jna-4.0.0.jar"/>
+		<copy tofile="${distDir}/extensions/jna/jna-platform-4.0.0.jar" file="extensions/gdxmu/libs/jna-platform-4.0.0.jar"/>
+		<path id="classpath">
+			<pathelement location="${distDir}/gdx.jar"/>
+			<pathelement location="${distDir}/extensions/gdx-controllers/gdx-controllers.jar"/>
+			<pathelement location="${distDir}/extensions/gdx-controllers/gdx-controllers-desktop.jar"/>
+			<pathelement location="${distDir}/extensions/jna/jna-4.0.0.jar"/>
+			<pathelement location="${distDir}/extensions/jna/jna-platform-4.0.0.jar"/>
+		</path>
+		<ant antfile="../../build-template.xml" dir="extensions/gdxmu">
+			<property name="distDir" value="${distDir}/extensions/gdxmu"/>
+			<property name="jar" value="gdxmu"/>
+			<reference refid="classpath"/>
+		</ant>
+	</target>
+
 	<target name="gdx-controllers-android" depends="gdx-core,gdx-backend-android,gdx-controllers">
 		<path id="classpath">
 			<pathelement location="${distDir}/gdx.jar"/>
@@ -327,7 +345,7 @@
 	</target>
 
 	<target name="jars"
-depends="clean,gdx-setup-ui,gdx-setup,gdx-core,gdx-openal,gdx-backend-lwjgl,gdx-backend-jglfw,gdx-backend-android,gdx-backend-gwt,gdx-backend-robovm,gdx-tools,gdx-controllers,gdx-controllers-desktop,gdx-controllers-android,gdx-controllers-gwt,gdx-image,gdx-audio,gdx-freetype,gdx-bullet,gdx-tiled-preprocessor"/>
+depends="clean,gdx-setup-ui,gdx-setup,gdx-core,gdx-openal,gdx-backend-lwjgl,gdx-backend-jglfw,gdx-backend-android,gdx-backend-gwt,gdx-backend-robovm,gdx-tools,gdx-controllers,gdx-controllers-desktop,gdxmu,gdx-controllers-android,gdx-controllers-gwt,gdx-image,gdx-audio,gdx-freetype,gdx-bullet,gdx-tiled-preprocessor"/>
 
 	<target name="all" depends="jars,docs">
 		<!-- copy distribution files (licences etc.) -->
@@ -342,3 +360,4 @@ depends="clean,gdx-setup-ui,gdx-setup,gdx-core,gdx-openal,gdx-backend-lwjgl,gdx-
 		<checksum file="libgdx-${version}.zip" forceOverwrite="yes" />
 	</target>
 </project>
+
