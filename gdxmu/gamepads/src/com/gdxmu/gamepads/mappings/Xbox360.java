@@ -28,6 +28,8 @@ public class Xbox360 {
 		switch (ostype) {
 			case MacOS:
 			{
+				//NOTE: for use with 0.12 TattieBogle (Colin Munro) driver
+				//http://tattiebogle.net/index.php/ProjectRoot/Xbox360Controller/OsxDriver
 				BUTTON_DASHBOARD = 10;
 				BUTTON_X = 13;
 				BUTTON_Y = 14;
@@ -49,6 +51,7 @@ public class Xbox360 {
 				break;
 			case Linux:
 			{
+				//NOTE: For use with "xpad" driver
 				BUTTON_DASHBOARD = 8;
 				BUTTON_X = 2;
 				BUTTON_Y = 3;
