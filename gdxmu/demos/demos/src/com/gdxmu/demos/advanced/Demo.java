@@ -175,7 +175,7 @@ public class Demo implements ApplicationListener, Listener {
 						break;
 				}
 				break;
-			case WIN_STATE:
+			case WIN_STATE: // Currently Windows only
 				switch (param) {
 					case MiscUtils.PARAM_WIN_STATE_RESTORED:
 						setMaximized(false);
