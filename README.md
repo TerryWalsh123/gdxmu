@@ -1,4 +1,4 @@
-GDXMU - Miscellaneous Utilities for Libgdx.
+Gdxmu - Miscellaneous Utilities for Libgdx.
 
 Alpha 0.1 - initial release.
 
@@ -21,11 +21,12 @@ Version 0.1
      equivalent names.
 
 ### Notes
-Gdxmu offers workarounds to desktop problems in Libgdx. I have attempted to separate the gdxmu
-changes from the core Libgdx code as much as possible because I don't believe they will be merged
-with Libgdx. As such I can maintain them more easily. If the Libgdx team is satisfied that the
-workarounds are acceptable, then I can more closely integrate them if I am afforded a few small
-changes to the Libgdx controllers code.
+Gdxmu offers workarounds to desktop problems in Libgdx. Specifically, Gdxmu currently allows for
+gamepad controller hotplugging/hotswapping on all desktop platforms and for window state management
+on Windows. I have attempted to separate the Gdxmu changes from the core Libgdx code as much as
+possible because I don't believe they will be merged with Libgdx. As such I can maintain them
+more easily. If the Libgdx team is satisfied that the workarounds are acceptable, then I can
+more closely integrate them if I am afforded a few small changes to the Libgdx controllers code.
 
 #### Documentation
 I will provide a link to the Libgdx discussion thread on the badlogic forum when it is available.
