@@ -98,8 +98,7 @@ public class Xbox360 {
 
 	
 	// NOTE: some gamepad drivers fire button events for dpad
-	// movement rather than the expected povMoved events. These
-	// are translated as required in extended classes.
+	// movement rather than the expected povMoved events.
 	public static PovDirection button2PovDir(int buttonCode) {
 		OsCheck.OSType ostype=OsCheck.getOperatingSystemType();
 		
